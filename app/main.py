@@ -28,15 +28,8 @@ class Animal:
 class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
-        print(f"{self.name} is now {'hiding' if self.hidden else 'visible'}.")
-
 
 class Carnivore(Animal):
     def bite(self, herb: Herbivore) -> None:
-        if isinstance(herb, Herbivore):
-            if not herb.hidden:
-                herb.health -= 50
-            else:
-                print(f"{herb.name} is hiding, can't bite.")
-        else:
-            print(f"{self.name} cannot bite another carnivore.")
+        if isinstance(herb, Herbivore) and not herb.hidden:
+            herb.health -= 50
